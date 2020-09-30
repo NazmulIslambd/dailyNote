@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './tranactions.dart';
+import 'package:intl/intl.dart'; //i use intl package for date and formmation
 
 void main() => runApp(DailyList());
 
@@ -53,34 +54,32 @@ class DailyList extends StatelessWidget {
                           border: Border.all(
                         color: Colors.purple,
                         width: 2,
-                      )
+                      )),
+                      child: Text(
+                        '\$${tx.ammount}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple),
                       ),
-                      child: Text(tx.ammount.toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.purple
-                      ),),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        
-                        Text(tx.titel,
-                        style: TextStyle(
-                          fontWeight:FontWeight.w700,
-                          fontSize:16,
-                          color:Colors.teal,
-                        
+                        Text(
+                          tx.titel,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Colors.teal,
+                          ),
                         ),
-                        
-                        ),
-                        Text(tx.date.toString(),
-                        style: TextStyle(
-                          fontWeight:FontWeight.w900,
-                          fontSize:10,
-                          color:Colors.grey,
-                        )),
+                        Text(DateFormat('yyyy/MM/dd').format(tx.date),//inatialize package
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 10,
+                              color: Colors.grey,
+                            )),
                       ],
                     )
                   ],
